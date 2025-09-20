@@ -1,0 +1,23 @@
+{
+  "name": "gala-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "deploy": "source .env && scp index.js tui.js .env package.json package-lock.json .env root@$DEPLOY_HOST:/root/gala-bot/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@gala-chain/api": "^2.4.2",
+    "@gala-chain/gswap-sdk": "^0.0.7",
+    "@google/genai": "^1.15.0",
+    "blessed": "^0.1.81",
+    "dotenv": "^17.2.1",
+    "node-fetch": "^2.7.0"
+  }
+}
