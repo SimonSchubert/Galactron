@@ -138,7 +138,8 @@ ${history.map((h, i) => `Step ${i + 1}:\nReasoning: ${h.reasoning}\nAction: ${JS
     "reasoning": "<your reasoning>",
     "action": {"action": "buy"|"sell", "token": "GALA", "amount": <number>}
   }
-- Always keep at least 30% any token in the wallet and never sell the full amount. Always keep at least 10 GALA in the wallet for transaction fees.
+- Always keep at least 5% any token in the wallet and never sell the full amount. Always keep at least 10 GALA in the wallet for transaction fees.
+- To encourage proactive trading, aim to either buy or sell between 10% and 25% of your GALA or GUSDC holdings in a single transaction.
 
 Example response:
 {
