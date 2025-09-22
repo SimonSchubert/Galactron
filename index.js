@@ -36,7 +36,19 @@ async function getCurrentPrice() {
     if (fs.existsSync(csvPath)) {
       csvContent = fs.readFileSync(csvPath, "utf8");
     }
-    fs.writeFileSync(csvPath, newLine + csvContent);
+    // Filter out entries older than 3 days
+    const threeDaysAgo = Date.now() - 3 * 24 * 60 * 60 * 1000;
+    const filteredLines = csvContent
+      .split("\n")
+      .filter(line => {
+        const parts = line.split(",");
+        if (parts.length < 2) return false;
+        const ts = Date.parse(parts[1]);
+        return !isNaN(ts) && ts >= threeDaysAgo;
+      });
+    // Add the new line at the top
+    const updatedContent = [newLine.trim(), ...filteredLines].join("\n") + "\n";
+    fs.writeFileSync(csvPath, updatedContent);
     return data.data;
   } else {
     console.error("❌ Unexpected response:", data);
